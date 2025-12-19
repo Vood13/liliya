@@ -113,17 +113,18 @@
     <div class="scanline"></div>
 
     <!-- Header -->
-<header class="fixed top-0 left-0 right-0 z-40 border-b border-white/5 bg-black/80 backdrop-blur-md transition-all duration-500" id="main-header">
-    <div class="container mx-auto px-6 h-16 flex items-center justify-between">
-        <div class="text-xl font-bold tracking-tighter lowercase">котенок</div>
-        
-        <nav class="hidden md:flex items-center space-x-10">
-            <a href="#about" class="text-[10px] uppercase tracking-[0.4em] opacity-50 hover:opacity-100 transition-opacity">о лилии</a>
-            <a href="#abilities" class="text-[10px] uppercase tracking-[0.4em] opacity-50 hover:opacity-100 transition-opacity">возможности</a>
-        </nav>
+    <header class="fixed top-0 left-0 right-0 z-40 border-b border-white/5 bg-black/80 backdrop-blur-md transition-all duration-500" id="main-header">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="text-xl font-bold tracking-tighter lowercase">котенок</div>
+            
+            <nav class="hidden md:flex items-center space-x-10">
+                <a href="#about" class="text-[10px] uppercase tracking-[0.4em] opacity-50 hover:opacity-100 transition-opacity">о лилии</a>
+                <a href="#abilities" class="text-[10px] uppercase tracking-[0.4em] opacity-50 hover:opacity-100 transition-opacity">возможности</a>
+            </nav>
 
+            <div class="w-10"></div> <!-- Placeholder for layout balance -->
         </div>
-</header>
+    </header>
 
     <main>
         <!-- Hero -->
@@ -150,18 +151,17 @@
                         <span class="text-[10px] uppercase tracking-[0.4em] opacity-40">Profile Entry 01</span>
                     </div>
                     <h2 class="text-6xl md:text-8xl font-bold tracking-tighter uppercase leading-tight">О Лилии</h2>
-                    <div class="text-xl md:text-3xl leading-relaxed font-light italic opacity-80 border-l-2 pl-8 border-white/20 dark:border-white/20 light:border-black/20" id="about-text-container">
+                    <div class="text-xl md:text-3xl leading-relaxed font-light italic opacity-80 border-l-2 pl-8 border-white/20" id="about-text-container">
                         <p class="mb-4">"Взгляд острее льда, а в словах — металл,"</p>
-                        <p>"Резкий тон обрывает любую попытку сближения."</p>
+                        <p class="mb-4">"Резкий тон обрывает любую попытку сближения."</p>
                         <p>"Она сама себе — крепость, которую никто не взял."</p>
                     </div>
                 </div>
-            </div>
                 <div class="flex justify-center lg:justify-end">
                     <div class="relative w-full max-w-[450px] aspect-[4/5] group">
                         <div class="absolute -inset-6 border border-current opacity-[0.03] rounded-[2rem] -rotate-3 transition-transform duration-700 group-hover:rotate-0"></div>
                         <div class="w-full h-full border border-white/10 overflow-hidden rounded-2xl bg-zinc-900 shadow-2xl relative">
-                            <img src="https://i.pinimg.com/originals/8f/2c/8e/8f2c8ef6340f1a415a782e4e7e6f8090.jpg" alt="Lily" class="w-full h-full object-cover custom-grayscale">
+                            <img src="https://i.pinimg.com/236x/8c/d2/b5/8cd2b54b4871bcc04ba808e8a7f99e30.jpg" alt="Lily" class="w-full h-full object-cover custom-grayscale">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
                         </div>
                     </div>
@@ -178,21 +178,18 @@
                 </div>
                 <div class="h-[1px] flex-grow bg-current opacity-10 mb-4 hidden md:block"></div>
             </div>
-            <div class="grid md:grid-cols-3 gap-1px bg-white/5 dark:bg-white/5 light:bg-black/5 border border-white/5 dark:border-white/5 light:border-black/5">
-                <div class="p-12 bg-black dark:bg-black light:bg-white hover:bg-zinc-900/50 transition-colors group">
+            <div class="grid md:grid-cols-3 gap-1px bg-white/5 border border-white/5">
+                <div class="p-12 bg-black hover:bg-zinc-900/50 transition-colors group">
                     <i data-lucide="swords" class="w-10 h-10 mb-8 opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
-                    <h3 class="text-lg font-bold tracking-widest uppercase mb-4">Может въе*ать</h3>
-                    <!-- <p class="text-xs opacity-40 leading-relaxed uppercase tracking-tighter">Сила духа и решительность в каждом действии.</p> -->
+                    <h3 class="text-lg font-bold tracking-widest uppercase">Может въе*ать</h3>
                 </div>
-                <div class="p-12 bg-black dark:bg-black light:bg-white hover:bg-zinc-900/50 transition-colors group">
+                <div class="p-12 bg-black hover:bg-zinc-900/50 transition-colors group">
                     <i data-lucide="gamepad-2" class="w-10 h-10 mb-8 opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
-                    <h3 class="text-lg font-bold tracking-widest uppercase mb-4">Играет в бравл старс</h3>
-                    <!--<p class="text-xs opacity-40 leading-relaxed uppercase tracking-tighter">Тактическое мышление в виртуальных сражениях.</p>-->
+                    <h3 class="text-lg font-bold tracking-widest uppercase">Играет в бравл старс</h3>
                 </div>
-                <div class="p-12 bg-black dark:bg-black light:bg-white hover:bg-zinc-900/50 transition-colors group">
+                <div class="p-12 bg-black hover:bg-zinc-900/50 transition-colors group">
                     <i data-lucide="crown" class="w-10 h-10 mb-8 opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
-                    <h3 class="text-lg font-bold tracking-widest uppercase mb-4">Крутая ваще</h3>
-                    <!--<p class="text-xs opacity-40 leading-relaxed uppercase tracking-tighter">Прирожденный лидер с безупречным стилем.</p>-->
+                    <h3 class="text-lg font-bold tracking-widest uppercase">Крутая ваще</h3>
                 </div>
             </div>
         </section>
@@ -204,7 +201,7 @@
             <div class="flex flex-col gap-2">
                 <div class="text-xl font-bold lowercase">котенок</div>
                 <div class="opacity-30 text-[9px] font-mono uppercase tracking-[0.3em]">
-                    &copy; <span id="year"></span> &bull; Все права защищены лиличкой. 
+                    &copy; <span id="year"></span> &bull; All rights reserved
                 </div>
             </div>
             <button id="secret-btn" class="px-10 py-4 border border-white/20 hover:border-white font-bold uppercase tracking-[0.3em] text-[9px] transition-all bg-transparent hover:bg-white hover:text-black">
@@ -234,7 +231,7 @@
             </div>
         </div>
         <span id="secret-footer" class="absolute bottom-10 left-0 right-0 opacity-0 transition-all duration-1000 text-[8px] uppercase tracking-[0.6em] pointer-events-none">
-            кликните, чтобы скрыть окошко =)
+            кликните, чтобы скрыть протокол
         </span>
     </div>
 
@@ -244,34 +241,6 @@
 
         // Дата
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Тема
-        // const themeBtn = document.getElementById('theme-toggle');
-        // const themeIcon = document.getElementById('theme-icon');
-        const header = document.getElementById('main-header');
-        const html = document.documentElement;
-
-       /* function updateThemeUI(isDark) {
-            if (isDark) {
-                html.classList.add('dark');
-                html.classList.remove('light');
-                document.body.className = "bg-black text-white selection:bg-white selection:text-black font-sans";
-                header.className = "fixed top-0 left-0 right-0 z-40 border-b border-white/5 bg-black/80 backdrop-blur-md transition-all duration-500";
-                themeIcon.setAttribute('data-lucide', 'sun');
-            } else {
-                html.classList.add('light');
-                html.classList.remove('dark');
-                document.body.className = "bg-white text-black selection:bg-black selection:text-white font-sans";
-                header.className = "fixed top-0 left-0 right-0 z-40 border-b border-black/5 bg-white/80 backdrop-blur-md transition-all duration-500";
-                themeIcon.setAttribute('data-lucide', 'moon');
-            }
-            lucide.createIcons();
-        } */
-
-        /* themeBtn.addEventListener('click', () => {
-            const isDark = html.classList.contains('dark');
-            updateThemeUI(!isDark);
-        }); */
 
         // Скролл-анимации
         const observer = new IntersectionObserver((entries) => {
@@ -318,15 +287,14 @@
         });
 
         // Шапка при скролле
+        const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('py-2');
-                const isDark = html.classList.contains('dark');
-                header.style.backgroundColor = isDark ? 'rgba(0,0,0,0.95)' : 'rgba(255,255,255,0.95)';
+                header.style.backgroundColor = 'rgba(0,0,0,0.95)';
             } else {
                 header.classList.remove('py-2');
-                const isDark = html.classList.contains('dark');
-                header.style.backgroundColor = isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)';
+                header.style.backgroundColor = 'rgba(0,0,0,0.8)';
             }
         });
     </script>
