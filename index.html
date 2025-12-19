@@ -1,69 +1,75 @@
 
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>котенок</title>
+    <meta name="description" content="Персональный сайт Лилии в минималистичном черно-белом стиле с анимациями.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            background-color: #000;
-            color: #fff;
-            margin: 0;
+            transition: background-color 0.7s ease, color 0.7s ease;
         }
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #fff;
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.03), transparent);
+            pointer-events: none;
+            animation: scanline 8s linear infinite;
+            z-index: 50;
         }
         @keyframes scanline {
             0% { transform: translateY(-100%); }
             100% { transform: translateY(100%); }
         }
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent);
-            pointer-events: none;
-            animation: scanline 8s linear infinite;
-            z-index: 50;
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
         }
-        #root:empty {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: black;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        #root:empty::after {
-            content: "инициализация...";
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5em;
-            color: rgba(255,255,255,0.3);
-            animation: pulse 1.5s infinite;
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .grayscale-img {
+            filter: grayscale(100%) contrast(110%);
+            transition: filter 0.5s ease;
+        }
+        .grayscale-img:hover {
+            filter: grayscale(0%) contrast(100%);
         }
     </style>
 <script type="importmap">
@@ -74,10 +80,206 @@
 }
 </script>
 </head>
-<body>
-    <div id="root"></div>
+<body class="bg-black text-white selection:bg-white selection:text-black">
     <div class="scanline"></div>
-    <script type="module" src="https://esm.sh/run"></script>
-    <script type="text/tsx" src="./index.tsx"></script>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 border-b border-white/10 dark:border-white/10 bg-black/80 dark:bg-black/80 backdrop-blur-md transition-colors duration-700">
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="text-xl font-bold tracking-tighter lowercase">котенок</div>
+            
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-[10px] uppercase tracking-[0.3em] hover:opacity-50 transition-opacity">о лилии</a>
+                <a href="#abilities" class="text-[10px] uppercase tracking-[0.3em] hover:opacity-50 transition-opacity">возможности</a>
+            </nav>
+
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                <i data-lucide="sun" id="theme-icon" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-8">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col items-center justify-center text-center relative">
+            <div class="fade-in">
+                <h1 class="text-7xl md:text-[10rem] font-bold tracking-tighter leading-none mb-4 select-none lowercase">
+                    котенок
+                </h1>
+                <p class="text-sm md:text-xl font-light tracking-[0.3em] uppercase opacity-50">
+                    Lily / Digital Fortress
+                </p>
+            </div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
+                <div class="w-[1px] h-12 bg-current"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 reveal">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="h-px w-12 bg-current opacity-30"></div>
+                        <span class="text-xs uppercase tracking-[0.3em] opacity-50">Profile Entry</span>
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-none">О Лилии</h2>
+                    <div class="text-xl md:text-2xl leading-relaxed font-light italic opacity-90 border-l-2 pl-6 border-current">
+                        <p class="mb-2">"Взгляд острее льда, а в словах — металл,"</p>
+                        <p>"Она сама себе — крепость."</p>
+                    </div>
+                </div>
+                <div class="flex justify-center md:justify-end">
+                    <div class="relative w-full max-w-[400px] aspect-square group">
+                        <div class="absolute -inset-4 border border-current opacity-5 rounded-3xl -rotate-3 transition-transform group-hover:rotate-0"></div>
+                        <div class="w-full h-full border-2 border-current/10 overflow-hidden rounded-2xl bg-zinc-900 shadow-2xl">
+                            <img src="https://i.pinimg.com/originals/8f/2c/8e/8f2c8ef6340f1a415a782e4e7e6f8090.jpg" alt="Lily" class="w-full h-full object-cover grayscale-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abilities Section -->
+        <section id="abilities" class="py-32 reveal">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">Её возможности</h2>
+                <div class="h-[1px] w-full bg-current opacity-10"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="p-10 border border-current/10 hover:border-current/30 transition-all group">
+                    <i data-lucide="swords" class="w-12 h-12 mx-auto mb-6 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+                    <h3 class="text-xl font-bold tracking-tight uppercase">Может въе*ать</h3>
+                </div>
+                <div class="p-10 border border-current/10 hover:border-current/30 transition-all group">
+                    <i data-lucide="gamepad-2" class="w-12 h-12 mx-auto mb-6 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+                    <h3 class="text-xl font-bold tracking-tight uppercase">Играет в бравл старс</h3>
+                </div>
+                <div class="p-10 border border-current/10 hover:border-current/30 transition-all group">
+                    <i data-lucide="crown" class="w-12 h-12 mx-auto mb-6 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+                    <h3 class="text-xl font-bold tracking-tight uppercase">Крутая ваще</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/10 mt-20">
+        <div class="container mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="opacity-40 text-[10px] font-mono uppercase tracking-widest">
+                &copy; <span id="year"></span> котенок.
+            </div>
+            <button id="secret-btn" class="px-8 py-3 border border-current font-bold uppercase tracking-widest text-[10px] hover:bg-current hover:text-black transition-all dark:hover:text-black">
+                Не нажимай
+            </button>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-confirm" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+        <div class="max-w-md w-full p-10 border border-white/20 bg-zinc-900 text-center text-white">
+            <h3 class="text-2xl font-bold mb-10 uppercase tracking-tighter">Вы уверены?</h3>
+            <div class="flex gap-4">
+                <button id="confirm-yes" class="flex-1 py-4 border border-white font-bold hover:bg-white hover:text-black transition-colors">ДА</button>
+                <button id="confirm-no" class="flex-1 py-4 opacity-50 hover:opacity-100 transition-opacity">НЕТ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-secret" class="fixed inset-0 z-[110] hidden bg-black items-center justify-center text-white text-center p-6 cursor-pointer">
+        <div id="secret-content" class="opacity-0 transition-opacity duration-1000">
+            <p class="text-3xl italic font-light">To love is to be friends with you.</p>
+            <p class="mt-12 text-7xl">🐾</p>
+            <span class="absolute bottom-10 left-0 right-0 opacity-20 text-[9px] uppercase tracking-[0.5em]">кликните, чтобы выйти</span>
+        </div>
+    </div>
+
+    <script>
+        // Инициализация иконок
+        lucide.createIcons();
+
+        // Текущий год
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Переключение темы
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        themeBtn.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                document.body.classList.remove('bg-black', 'text-white');
+                document.body.classList.add('bg-white', 'text-black');
+                themeIcon.setAttribute('data-lucide', 'moon');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                document.body.classList.remove('bg-white', 'text-black');
+                document.body.classList.add('bg-black', 'text-white');
+                themeIcon.setAttribute('data-lucide', 'sun');
+            }
+            lucide.createIcons();
+        });
+
+        // Анимация появления при скролле
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Логика секретной кнопки
+        const secretBtn = document.getElementById('secret-btn');
+        const modalConfirm = document.getElementById('modal-confirm');
+        const modalSecret = document.getElementById('modal-secret');
+        const secretContent = document.getElementById('secret-content');
+        const confirmYes = document.getElementById('confirm-yes');
+        const confirmNo = document.getElementById('confirm-no');
+
+        secretBtn.addEventListener('click', () => {
+            modalConfirm.classList.remove('hidden');
+            modalConfirm.classList.add('flex');
+        });
+
+        confirmNo.addEventListener('click', () => {
+            modalConfirm.classList.add('hidden');
+            modalConfirm.classList.remove('flex');
+        });
+
+        confirmYes.addEventListener('click', () => {
+            modalConfirm.classList.add('hidden');
+            modalConfirm.classList.remove('flex');
+            modalSecret.classList.remove('hidden');
+            modalSecret.classList.add('flex');
+            setTimeout(() => {
+                secretContent.classList.remove('opacity-0');
+                secretContent.classList.add('opacity-100');
+            }, 100);
+        });
+
+        modalSecret.addEventListener('click', () => {
+            secretContent.classList.add('opacity-0');
+            setTimeout(() => {
+                modalSecret.classList.add('hidden');
+                modalSecret.classList.remove('flex');
+            }, 500);
+        });
+
+        // Плавный скролл
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>

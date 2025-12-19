@@ -1,14 +1,3 @@
 
-import React from 'https://esm.sh/react@19';
-import ReactDOM from 'https://esm.sh/react-dom@19/client';
-import App from './App.tsx';
-
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
-}
+// Файл оставлен пустым, так как проект переведен на Vanilla JS в index.html
+// для обеспечения 100% совместимости и скорости загрузки.
