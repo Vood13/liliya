@@ -1,11 +1,10 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'https://esm.sh/react@19';
 import { Header } from './components/Header.tsx';
 import { Hero } from './components/Hero.tsx';
 import { AboutSection } from './components/AboutSection.tsx';
 import { AbilitiesSection } from './components/AbilitiesSection.tsx';
 import { Footer } from './components/Footer.tsx';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -15,7 +14,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <div className={`min-h-screen transition-colors duration-700 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       
       <main className="container mx-auto px-4 md:px-8">

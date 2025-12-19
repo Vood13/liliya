@@ -1,7 +1,7 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Moon, Sun, Github } from 'lucide-react';
+import React from 'https://esm.sh/react@19';
+import { motion } from 'https://esm.sh/framer-motion@12';
+import { Moon, Sun } from 'https://esm.sh/lucide-react@0.475.0';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleTheme }) => {
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl font-bold tracking-tighter"
+          className="text-xl font-bold tracking-tighter lowercase"
         >
           котенок
         </motion.div>
@@ -32,9 +32,9 @@ export const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleTheme }) => {
             <button
               key={item}
               onClick={() => scrollTo(item)}
-              className={`text-sm uppercase tracking-widest hover:opacity-50 transition-opacity ${isDarkMode ? 'text-white' : 'text-black'}`}
+              className={`text-[10px] uppercase tracking-[0.3em] hover:opacity-50 transition-opacity ${isDarkMode ? 'text-white' : 'text-black'}`}
             >
-              {item === 'about' ? 'О Лилии' : 'Возможности'}
+              {item === 'about' ? 'о лилии' : 'возможности'}
             </button>
           ))}
         </nav>
@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleTheme }) => {
             onClick={toggleTheme}
             className={`p-2 rounded-full transition-colors ${isDarkMode ? 'hover:bg-white/10' : 'hover:bg-black/10'}`}
           >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            {isDarkMode ? <Sun size={18} strokeWidth={1.5} /> : <Moon size={18} strokeWidth={1.5} />}
           </button>
         </div>
       </div>
