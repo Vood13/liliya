@@ -254,7 +254,7 @@
         const header = document.getElementById('main-header');
         const html = document.documentElement;
 
-        function updateThemeUI(isDark) {
+       /* function updateThemeUI(isDark) {
             if (isDark) {
                 html.classList.add('dark');
                 html.classList.remove('light');
@@ -269,12 +269,12 @@
                 themeIcon.setAttribute('data-lucide', 'moon');
             }
             lucide.createIcons();
-        }
+        } */
 
-        themeBtn.addEventListener('click', () => {
+        /* themeBtn.addEventListener('click', () => {
             const isDark = html.classList.contains('dark');
             updateThemeUI(!isDark);
-        });
+        }); */
 
         // Скролл-анимации
         const observer = new IntersectionObserver((entries) => {
