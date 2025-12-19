@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
-import { AbilitiesSection } from './components/AbilitiesSection';
-import { Footer } from './components/Footer';
+import { Header } from './components/Header.tsx';
+import { Hero } from './components/Hero.tsx';
+import { AboutSection } from './components/AboutSection.tsx';
+import { AbilitiesSection } from './components/AbilitiesSection.tsx';
+import { Footer } from './components/Footer.tsx';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
