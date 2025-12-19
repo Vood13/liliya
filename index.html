@@ -15,6 +15,7 @@
             overflow-x: hidden;
             background-color: #000;
             color: #fff;
+            margin: 0;
         }
         .mono {
             font-family: 'JetBrains Mono', monospace;
@@ -60,10 +61,7 @@
     <div id="root"></div>
     <div class="scanline"></div>
 
-    <!-- 
-      esm.sh/run автоматически скомпилирует ваш TSX код.
-      Это идеальное решение для GitHub Pages, так как оно игнорирует неправильные MIME-типы сервера.
-    -->
+    <!-- Загрузчик, который превращает .tsx в работающий сайт прямо в браузере -->
     <script type="module" src="https://esm.sh/run"></script>
     <script type="text/tsx" src="./index.tsx"></script>
 </body>
