@@ -9,13 +9,9 @@ import { Footer } from './components/Footer.tsx';
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
     <div className={`min-h-screen transition-colors duration-700 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
-      <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <Header isDarkMode={isDarkMode} toggleTheme={() => setIsDarkMode(!isDarkMode)} />
       
       <main className="container mx-auto px-4 md:px-8">
         <Hero isDarkMode={isDarkMode} />

@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from 'https://esm.sh/react@19';
+import { motion } from 'https://esm.sh/framer-motion@12';
 
 interface HeroProps {
   isDarkMode: boolean;
@@ -14,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-8xl md:text-[12rem] font-bold tracking-tighter leading-none mb-4 select-none">
+        <h1 className="text-8xl md:text-[12rem] font-bold tracking-tighter leading-none mb-4 select-none lowercase">
           котенок
         </h1>
         <motion.p 

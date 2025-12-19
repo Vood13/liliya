@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>котенок</title>
-    <!-- Favicon в виде лапки, чтобы убрать ошибку 404 и украсить вкладку -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +45,6 @@
             animation: scanline 8s linear infinite;
             z-index: 50;
         }
-        /* Фикс для предотвращения мерцания при загрузке */
         #root:empty {
             display: flex;
             align-items: center;
@@ -71,10 +69,7 @@
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
@@ -82,12 +77,6 @@
 <body>
     <div id="root"></div>
     <div class="scanline"></div>
-
-    <!-- 
-      Загрузчик esm.sh/run. 
-      Он перехватывает скрипты с типом text/tsx, сам скачивает их (игнорируя MIME-тип сервера) 
-      и компилирует в JavaScript прямо в браузере.
-    -->
     <script type="module" src="https://esm.sh/run"></script>
     <script type="text/tsx" src="./index.tsx"></script>
 </body>
