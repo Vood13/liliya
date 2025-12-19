@@ -75,14 +75,31 @@
             filter: grayscale(0%) contrast(1);
         }
 
-        .heart-pulse {
-            display: inline-block;
-            animation: pulse 1.5s ease-in-out infinite;
-            color: #ff4d4d;
+        .heart-svg {
+            width: 140px;
+            height: 140px;
+            fill: transparent;
+            stroke: #ffffff;
+            stroke-width: 0.8;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: 
+                drawHeart 2s ease-out forwards, 
+                fillHeart 1.5s ease-in forwards 1.8s,
+                pulse 2s ease-in-out infinite 3.3s;
         }
+
+        @keyframes drawHeart {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fillHeart {
+            to { fill: #ffffff; stroke-width: 0; }
+        }
+
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.9; }
         }
         
         /* Скрытие полосы прокрутки */
@@ -209,14 +226,17 @@
     </div>
 
     <div id="modal-secret" class="fixed inset-0 z-[110] hidden bg-black items-center justify-center text-white text-center p-10 cursor-pointer">
-        <div id="secret-content" class="opacity-0 transition-all duration-1000 scale-95">
+        <div id="secret-content" class="opacity-0 transition-all duration-1000 scale-95 flex flex-col items-center">
             <p class="text-2xl md:text-4xl italic font-light mb-12">To love is to be friends with you.</p>
-            <div class="flex items-center justify-center gap-4 text-7xl md:text-8xl">
-                <span>🐾</span>
-                <span class="heart-pulse">❤️</span>
+            <div class="mb-12">
+                <svg class="heart-svg" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
             </div>
-            <span class="absolute bottom-12 left-0 right-0 opacity-20 text-[8px] uppercase tracking-[0.6em]">кликните, чтобы закрыть протокол</span>
         </div>
+        <span id="secret-footer" class="absolute bottom-10 left-0 right-0 opacity-0 transition-all duration-1000 text-[8px] uppercase tracking-[0.6em] pointer-events-none">
+            кликните, чтобы скрыть протокол
+        </span>
     </div>
 
     <script>
@@ -270,6 +290,7 @@
         const modalConfirm = document.getElementById('modal-confirm');
         const modalSecret = document.getElementById('modal-secret');
         const secretContent = document.getElementById('secret-content');
+        const secretFooter = document.getElementById('secret-footer');
         
         secretBtn.addEventListener('click', () => {
             modalConfirm.classList.replace('hidden', 'flex');
@@ -285,11 +306,13 @@
             setTimeout(() => {
                 secretContent.classList.replace('opacity-0', 'opacity-100');
                 secretContent.classList.replace('scale-95', 'scale-100');
+                secretFooter.classList.replace('opacity-0', 'opacity-20');
             }, 50);
         });
 
         modalSecret.addEventListener('click', () => {
             secretContent.classList.replace('opacity-100', 'opacity-0');
+            secretFooter.classList.replace('opacity-20', 'opacity-0');
             setTimeout(() => {
                 modalSecret.classList.replace('flex', 'hidden');
             }, 600);
